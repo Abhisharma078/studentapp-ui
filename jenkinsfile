@@ -7,6 +7,10 @@ pipeline {
         maven 'maven'
     }
 
+    environment{
+        MY_AWS_CRED = credentials('aws-cred')
+    }
+
     stages {
         stage("checkout"){
             steps{
@@ -29,7 +33,7 @@ pipeline {
         stage('Artifacts to s3'){
             steps{
                 sh '''
-                  aws s3 cp target/*.war s3://mayurcbz.space/Arfifacts/student.war
+                  aws s3 cp target/*.war s3://mayurcbz.spacee/Arfifacts/student.war
                 '''
             }
         }
