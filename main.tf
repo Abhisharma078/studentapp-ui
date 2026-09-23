@@ -8,13 +8,6 @@ terraform {
       version = "6.26.0"
     }
   }
-
-  backend "s3" {
-    bucket       = "mayurcbz.spacee"
-    key          = "student-management/eks/terraform.tfstate"
-    region       = "us-east-2"
-    use_lockfile = true
-  }
 }
 
 provider "aws" {
