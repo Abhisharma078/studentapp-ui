@@ -3,11 +3,21 @@ pipeline {
         label "worker"
     }
 
+    tools {
+        maven 'maven'
+    }
+
     stages {
         stage("checkout"){
             steps{
                 git 'https://github.com/mayurpandit25/studentapp-ui.git'
                 echo "Clonning is successful"
+            }
+        }
+
+        stage("Build"){
+            steps{
+                sh 'mvn clean package'
             }
         }
     }
