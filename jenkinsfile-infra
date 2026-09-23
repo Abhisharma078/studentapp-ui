@@ -1,6 +1,6 @@
-pipeline {
-    agent {
-        label "worker"
+pipeline{
+    agent{
+        label 'worker'
     }
 
     tools{
@@ -8,31 +8,34 @@ pipeline {
     }
 
     environment{
-        MY_AWS_CRED = credentials('aws-cred')
+        my-aws = credentials('aws-cred')
     }
 
     stages{
-        stage('Checkout'){
+        stage('checkout'){
             steps{
-                git 'https://github.com/mayurpandit25/studentapp-ui.git'
+              git 'https://github.com/Abhisharma078/studentapp-ui.git'
+             echo "checkout is succefull"
             }
         }
 
-        stage('Terraform - Init'){
+        stage('terraform init'){
             steps{
                 sh 'terraform init'
             }
         }
 
-        stage('Terraform - validate'){
+        stage('terraform validate'){
             steps{
                 sh 'terraform validate'
             }
         }
-
-        stage('Terraform - apply'){
+        
+        stage('terraform apply'){
             steps{
-                sh 'terraform apply --auto-approve'
+                sh '''
+                terraform apply --auto-approve
+                '''
             }
         }
     }
