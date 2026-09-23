@@ -8,6 +8,13 @@ terraform {
       version = "6.26.0"
     }
   }
+
+  backend "s3" {
+    bucket       = "mayurcbz.spacee"
+    key          = "student-management/eks/terraform.tfstate"
+    region       = "us-east-2"
+    use_lockfile = true
+  }
 }
 
 provider "aws" {
@@ -50,7 +57,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {  // Attach EKS 
 
 
 resource "aws_iam_role" "node_role" { // IAM role for EKS worker nodes
-  name = "eks-node-role" // Name of the node role
+  name = "eks-node-role1" // Name of the node role
 
   assume_role_policy = jsonencode({ // Assume role policy
     Version = "2012-10-17"
