@@ -11,7 +11,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-south-1"
 }
 
 data "aws_vpc" "default" { // Fetch default VPC
@@ -20,7 +20,7 @@ data "aws_vpc" "default" { // Fetch default VPC
 
 variable "cluster_name" { // Variable for cluster name
   type    = string
-  default = "my-cluster-mayur"
+  default = "mycluster"
 }
 
 data "aws_subnets" "default" { // Fetch  all subnets in the default VPC
