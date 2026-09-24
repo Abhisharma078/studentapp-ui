@@ -35,7 +35,7 @@ pipeline{
         stage('artifacts to s3'){
             steps{
                 sh '''
-                 aws cp s3 target/*.war  s3://abhicloud.online/Artifacts/student.war
+                 aws s3 cp target/*.war  s3://abhicloud.online/Artifacts/student.war
                  '''
             }
         }
@@ -51,7 +51,7 @@ pipeline{
         stage('Quality gates'){
             steps {
                 timeout(time: 5 , unit: 'MINUTES'){
-                    waitForQualityGates  abortpipeline: true
+                    waitForQualityGate  abortpipeline: true
                 }
             }
         }
